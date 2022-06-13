@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Murakami</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <!-- Estilos da aplicação -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <a href="https://www.instagram.com/angelera.123/" target="_blank" class="header-brand">Projeto Murakami</a>
+    <nav class="header-navbar">
+      <ul>
+        <li>
+          <a href="https://www.instagram.com/huanup/" target="_blank" class="active">Home</a>
+        </li>
+        <li>
+          <a href="https://www.google.com/search?q=md+chefe&sxsrf=AOaemvJOmumkOy8546LDFPKxhpt4xrnL5Q:1634615651906&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjwiprqydXzAhWcppUCHWA_By0Q_AUoAXoECAEQAw&biw=1920&bih=937&dpr=1" target="_blank">Fotos</a>
+        </li>
+        <li>
+          <a href="https://www.farfetch.com/br?utm_source=google&utm_medium=cpc&isbrand=yes&pid=googleadwords_int&af_channel=Search&c=13238395352&af_c_id=13238395352&af_siteid=&af_keywords=kwd-533010193&af_adset_id=124157790913&af_ad_id=523585750296&is_retargeting=true&gclid=Cj0KCQjwtrSLBhCLARIsACh6RmhAx-G_b_tAiquSpmGXdtKD4UwuzhiP8Z1IoGnOv0DrhFmqrWhdCNwaAo9QEALw_wcB" target="_blank">Serviços</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=7KWllvhaOyc" target="_blank">Sobre</a>
+        </li>
+        <li>
+          <a href="https://api.whatsapp.com/send?phone=5511992138585" target="_blank">Contato</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-social-media">
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="gallery" id="contents">
+  
+    </div>
+    <script>
+
+      fetch('https://jsonplaceholder.typicode.com/users/')
+      .then(response => response.json())
+      .then(json =>{
+          debugger
+          const div = document.getElementById("contents");
+          for(let i = 0; i < 9; i++){
+            const x = document.createElement("div");
+            const a = document.createElement("a");
+            x.className = "gallery-card";
+            const y = document.createTextNode(json[i].name);
+            a.className = "gallery-card-btn";
+            a.appendChild(y);
+            x.appendChild(a);
+            div.appendChild(x)
+          }
+          console.log(json);
+      })
+  </script>
+  </main>
+  <form action="POST">
+    <input type="button" value="botao"> Nao faço ideia
+  </form>
+  <footer>
+    <p><span>Angelo e Bruna</span> &copy; 2021</p>
+  </footer>
+</body>
+</html>
