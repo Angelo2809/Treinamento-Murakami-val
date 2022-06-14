@@ -60,35 +60,73 @@
     </div>
   </header>
   <main>
-    <div class="gallery" id="contents">
-  
+    <div>
+      <button onclick="listAll()">Listar todos</button>
+      <button onclick="clear()">Limpar todos</button>
+      <div>
+        <input class="botao" type="text" name="id_user" id="id_user" placeholder="Digite o ID">
+      <button onclick="listOne()">Buscar usuário</button>
+      </div>
+      <div>
+        <input class="botao" type="text" name="name_user" id="name_user" placeholder="Digite o nome">
+        <input class="botao" type="text" name="nickname_user" id="nickname_user" placeholder="Digite o apelido">
+        <button onclick="addUser()">Adicionar usuário</button>
+      </div>
+      
+      <div class="gallery" id="contents">
+      </div>
     </div>
-    <script>
-
-      fetch('https://jsonplaceholder.typicode.com/users/')
-      .then(response => response.json())
-      .then(json =>{
-          debugger
-          const div = document.getElementById("contents");
-          for(let i = 0; i < 9; i++){
-            const x = document.createElement("div");
-            const a = document.createElement("a");
-            x.className = "gallery-card";
-            const y = document.createTextNode(json[i].name);
-            a.className = "gallery-card-btn";
-            a.appendChild(y);
-            x.appendChild(a);
-            div.appendChild(x)
-          }
-          console.log(json);
-      })
-  </script>
   </main>
-  <form action="POST">
-    <input type="button" value="botao"> Nao faço ideia
-  </form>
+
   <footer>
-    <p><span>Angelo e Bruna</span> &copy; 2021</p>
+    <p><span>Grupo 1</span> &copy; 2021</p>
   </footer>
 </body>
 </html>
+
+<script>
+
+function listAll(){
+  clear();
+  fetch('https://jsonplaceholder.typicode.com/users/')
+  .then(response => response.json())
+  .then(json =>{
+      const div = document.getElementById("contents");
+      for(let i = 0; i < 9; i++){
+        const x = document.createElement("div");
+        const a = document.createElement("a");
+        x.className = "gallery-card";
+        const y = document.createTextNode(json[i].name);
+        a.className = "gallery-card-btn";
+        a.appendChild(y);
+        x.appendChild(a);
+        div.appendChild(x)
+      };
+      console.log(json);
+  });
+}
+
+function listOne(){
+  clear();
+  var id = document.getElementById("id_user").value;
+  fetch('https://jsonplaceholder.typicode.com/users/' + id)
+  .then(response => response.json())
+  .then(json =>{
+        const div = document.getElementById("contents");
+        const x = document.createElement("div");
+        const a = document.createElement("a");
+        x.className = "gallery-card";
+        const y = document.createTextNode(json.name);
+        a.className = "gallery-card-btn";
+        a.appendChild(y);
+        x.appendChild(a);
+        div.appendChild(x);
+        console.log(json);
+  });
+}
+
+function clear(){
+  const div = document.querySelector("#contents");
+  div.innerHTML = "";
+}
+</script>
