@@ -69,16 +69,16 @@
   </header>
   <main>
     <div>
-      <button onclick="listAll()">Listar todos</button>
-      <button onclick="clearTeste()">Limpar todos</button>
+      <button onclick="listAll()" id="listAll">Listar todos</button>
+      <button onclick="clearTeste()" id="clear">Limpar todos</button>
       <div>
         <input class="botao" type="text" name="id_user" id="id_user" placeholder="Digite o ID">
-        <button onclick="listOne()">Buscar usuário</button>
+        <button onclick="listOne()" id="listOne">Buscar usuário</button>
       </div>
       <div>
         <input class="botao" type="text" name="name_user" id="name_user" placeholder="Digite o nome">
         <input class="botao" type="text" name="nickname_user" id="nickname_user" placeholder="Digite o apelido">
-        <button onclick="addUser()">Adicionar usuário</button>
+        <button onclick="addUser()" id="addUser">Adicionar usuário</button>
       </div>
 
       <div class="gallery" id="contents">
