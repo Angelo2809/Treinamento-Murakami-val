@@ -68,9 +68,10 @@
     </div>
   </header>
   <main>
-    <div>
+    <div class="campos">
       <button onclick="listAll()" id="listAll">Listar todos</button>
       <button onclick="clearTeste()" id="clear">Limpar todos</button>
+      <button onclick="deleteUser()" id="delete">Deletar usuario</button>
       <div>
         <input class="botao" type="text" name="id_user" id="id_user" placeholder="Digite o ID">
         <button onclick="listOne()" id="listOne">Buscar usuário</button>
@@ -80,10 +81,10 @@
         <input class="botao" type="text" name="nickname_user" id="nickname_user" placeholder="Digite o apelido">
         <button onclick="addUser()" id="addUser">Adicionar usuário</button>
       </div>
-
+    </div>
       <div class="gallery" id="contents">
       </div>
-    </div>
+    
   </main>
 
   <footer>
@@ -196,5 +197,22 @@
 
   function clearTeste(){
     clear();
+  }
+  
+  function deleteUser(){
+    const id = document.getElementById("id_user").value;
+    if(find(id) != -1)
+      users.splice(find(id), 1);
+    else
+      console.log("ID inexistente");
+    console.log(users)
+  }
+
+  function find(x){
+    for(let i = 0; i < users.length; i++){
+      if(users[i].id == x)
+        return i;
+    }
+    return -1;
   }
 </script>
