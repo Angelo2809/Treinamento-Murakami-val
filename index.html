@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto Murakami</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
   <!-- Estilos da aplicação -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header class="header">
     <a href="https://www.instagram.com/angelera.123/" target="_blank" class="header-brand">Projeto Murakami</a>
@@ -21,10 +27,12 @@
           <a href="https://www.instagram.com/huanup/" target="_blank" class="active">Home</a>
         </li>
         <li>
-          <a href="https://www.google.com/search?q=md+chefe&sxsrf=AOaemvJOmumkOy8546LDFPKxhpt4xrnL5Q:1634615651906&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjwiprqydXzAhWcppUCHWA_By0Q_AUoAXoECAEQAw&biw=1920&bih=937&dpr=1" target="_blank">Fotos</a>
+          <a href="https://www.google.com/search?q=md+chefe&sxsrf=AOaemvJOmumkOy8546LDFPKxhpt4xrnL5Q:1634615651906&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjwiprqydXzAhWcppUCHWA_By0Q_AUoAXoECAEQAw&biw=1920&bih=937&dpr=1"
+            target="_blank">Fotos</a>
         </li>
         <li>
-          <a href="https://www.farfetch.com/br?utm_source=google&utm_medium=cpc&isbrand=yes&pid=googleadwords_int&af_channel=Search&c=13238395352&af_c_id=13238395352&af_siteid=&af_keywords=kwd-533010193&af_adset_id=124157790913&af_ad_id=523585750296&is_retargeting=true&gclid=Cj0KCQjwtrSLBhCLARIsACh6RmhAx-G_b_tAiquSpmGXdtKD4UwuzhiP8Z1IoGnOv0DrhFmqrWhdCNwaAo9QEALw_wcB" target="_blank">Serviços</a>
+          <a href="https://www.farfetch.com/br?utm_source=google&utm_medium=cpc&isbrand=yes&pid=googleadwords_int&af_channel=Search&c=13238395352&af_c_id=13238395352&af_siteid=&af_keywords=kwd-533010193&af_adset_id=124157790913&af_ad_id=523585750296&is_retargeting=true&gclid=Cj0KCQjwtrSLBhCLARIsACh6RmhAx-G_b_tAiquSpmGXdtKD4UwuzhiP8Z1IoGnOv0DrhFmqrWhdCNwaAo9QEALw_wcB"
+            target="_blank">Serviços</a>
         </li>
         <li>
           <a href="https://www.youtube.com/watch?v=7KWllvhaOyc" target="_blank">Sobre</a>
@@ -62,17 +70,17 @@
   <main>
     <div>
       <button onclick="listAll()">Listar todos</button>
-      <button onclick="clear()">Limpar todos</button>
+      <button onclick="clearTeste()">Limpar todos</button>
       <div>
         <input class="botao" type="text" name="id_user" id="id_user" placeholder="Digite o ID">
-      <button onclick="listOne()">Buscar usuário</button>
+        <button onclick="listOne()">Buscar usuário</button>
       </div>
       <div>
         <input class="botao" type="text" name="name_user" id="name_user" placeholder="Digite o nome">
         <input class="botao" type="text" name="nickname_user" id="nickname_user" placeholder="Digite o apelido">
         <button onclick="addUser()">Adicionar usuário</button>
       </div>
-      
+
       <div class="gallery" id="contents">
       </div>
     </div>
@@ -82,36 +90,41 @@
     <p><span>Grupo 1</span> &copy; 2021</p>
   </footer>
 </body>
+
 </html>
 
 <script>
+  let users = [];
 
-function listAll(){
-  clear();
-  fetch('https://jsonplaceholder.typicode.com/users/')
-  .then(response => response.json())
-  .then(json =>{
-      const div = document.getElementById("contents");
-      for(let i = 0; i < 9; i++){
-        const x = document.createElement("div");
-        const a = document.createElement("a");
-        x.className = "gallery-card";
-        const y = document.createTextNode(json[i].name);
-        a.className = "gallery-card-btn";
-        a.appendChild(y);
-        x.appendChild(a);
-        div.appendChild(x)
-      };
-      console.log(json);
-  });
-}
+  function listAll() {
+    clear();
+    fetch('https://jsonplaceholder.typicode.com/users/')
+      .then(response => response.json())
+      .then(json => {
+        if(users.length == 0){
+          users = json;
+        }
+        const div = document.getElementById("contents");
+        for (let i = 0; i < users.length; i++) {
+          const x = document.createElement("div");
+          const a = document.createElement("a");
+          x.className = "gallery-card";
+          const y = document.createTextNode(users[i].name);
+          a.className = "gallery-card-btn";
+          a.appendChild(y);
+          x.appendChild(a);
+          div.appendChild(x)
+        };
+        console.log(json);
+      });
+  }
 
-function listOne(){
-  clear();
-  var id = document.getElementById("id_user").value;
-  fetch('https://jsonplaceholder.typicode.com/users/' + id)
-  .then(response => response.json())
-  .then(json =>{
+  function listOne() {
+    clear();
+    const id = document.getElementById("id_user").value;
+    fetch('https://jsonplaceholder.typicode.com/users/' + id)
+      .then(response => response.json())
+      .then(json => {
         const div = document.getElementById("contents");
         const x = document.createElement("div");
         const a = document.createElement("a");
@@ -121,12 +134,67 @@ function listOne(){
         a.appendChild(y);
         x.appendChild(a);
         div.appendChild(x);
-        console.log(json);
-  });
-}
+      });
+  }
 
-function clear(){
-  const div = document.querySelector("#contents");
-  div.innerHTML = "";
-}
+  function addUser() {
+    const nome = document.getElementById("name_user").value;
+    document.getElementById("name_user").value = '';
+    const nick = document.getElementById("nickname_user").value;
+    document.getElementById("nickname_user").value = '';
+    
+    if(users.length == 0){
+      fetch('https://jsonplaceholder.typicode.com/users/')
+      .then(response => response.json())
+      .then(json => {
+        users = json;
+      });
+    }
+    const user = `{
+    "id": ${users.length+1},
+    "name": "${nome}",
+    "username": "${nick}",
+    "email": "${nome}@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  }`;
+
+    fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      body: user,
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        users.push(json);
+      });
+
+  }
+
+  function clear() {
+    const div = document.querySelector("#contents");
+    div.innerHTML = "";
+  }
+
+  function clearTeste(){
+    clear();
+  }
 </script>
