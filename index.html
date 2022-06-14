@@ -78,7 +78,7 @@
       </div>
       <div>
         <input class="botao" type="text" name="name_user" id="name_user" placeholder="Digite o nome">
-        <input class="botao" type="text" name="nickname_user" id="nickname_user" placeholder="Digite o apelido">
+        <input class="botao" type="text" name="nickname_user" id="nickname_user" placeholder="Digite o sobrenome">
         <button onclick="addUser()" id="addUser">Adicionar usuário</button>
       </div>
     </div>
@@ -110,7 +110,7 @@
           const x = document.createElement("div");
           const a = document.createElement("a");
           x.className = "gallery-card";
-          const y = document.createTextNode(users[i].name);
+          const y = document.createTextNode(`${users[i].id} - ${users[i].name}`);
           a.className = "gallery-card-btn";
           a.appendChild(y);
           x.appendChild(a);
@@ -185,6 +185,7 @@
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
+        json.id = users.length+1;
         users.push(json);
       });
 
